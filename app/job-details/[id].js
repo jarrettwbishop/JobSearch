@@ -11,7 +11,7 @@ const JobDetails = () => {
     const params = useSearchParams();
     const router = useRouter();
 
-    const { data, isLoading, error, refetch } = useFetch('job-details',{job_id: params.id})
+    const { data, isLoading, error, refetch } = useFetch('job-details', {job_id: params.id})
 
     const [refreshing, setRefreshing] = useState(false);
 
@@ -52,7 +52,10 @@ const JobDetails = () => {
                 ) : (
                     <View style={{ padding: SIZES.medium, paddingBottom: 100}}>
                         <Company 
-                        
+                            companyLogo={data[0].employer_logo}
+                            jobTitle={data[0].job_title}
+                            companyName={data[0].employer_name}
+                            location={data[0].job_country}
                         />
 
                         <JobTabs 
